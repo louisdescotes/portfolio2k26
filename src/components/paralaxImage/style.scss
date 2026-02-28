@@ -1,0 +1,28 @@
+@use "@/styles/variables.scss" as *;
+
+.paralaxImage {
+    position: relative;
+
+    overflow: hidden;
+
+    &-container {
+        width: 100%;
+        height: 100%;
+
+        transform: translateZ(0);
+        will-change: transform;
+
+        &-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 150%;
+            height: 150%;
+
+            transform: translate3d(-50%, -35%, 0);
+
+            object-fit: cover;
+        }
+    }
+}

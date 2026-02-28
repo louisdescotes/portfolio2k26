@@ -1,0 +1,19 @@
+@use "@/styles/variables.scss" as *;
+
+.textAppear {
+    visibility: hidden;
+    height: 0;
+    width: 50vw;
+    overflow-x: scroll;
+    white-space: nowrap;
+    position: absolute;
+
+    &-line {
+        white-space: nowrap;
+        overflow: hidden;
+
+        p {
+            margin: 0;
+        }
+    }
+}

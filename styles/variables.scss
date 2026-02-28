@@ -1,0 +1,15 @@
+/** MODIFY **/
+
+$font: "Arial";
+$font-size: 18px;
+
+$header-top: 20px;
+$logo-w: 225px;
+$side-gap-header: clamp(16px, calc(4vw - 1rem), 72px);
+$side-gap: max($side-gap-header, calc((100vw - 1860px) / 2));
+$gutter: 30px;
+
+$primary: #EDEAE5;
+$secondary: #999181;
+$white: #FFFFFF;
+$black: #1A1818;
