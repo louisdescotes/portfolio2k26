@@ -2,8 +2,8 @@ import "@/styles/global.scss";
 import ReactLenis from "lenis/react";
 
 export const metadata = {
-  title: "My Next Template",
-  description: "Next.js starter",
+  title: "Louis Descotes - Portfolio",
+  description: "Développeur front-end et ui/ux designer",
 };
 
 export default function RootLayout({

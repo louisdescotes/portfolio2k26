@@ -1,0 +1,87 @@
+@use "@/styles/variables.scss" as *;
+
+.header {
+    position: sticky;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &-info {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 6px 8px 6px 6px;
+
+            background-color: #202020;
+            color: $white;
+
+            border-radius: 65px 12px 12px 65px;
+
+        }
+
+        &-socials {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+
+            &-block {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 10px;
+
+                background-color: #202020;
+                color: $white;
+
+                border-radius: 12px;
+
+                cursor: pointer;
+            }
+
+            &-close {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 10px;
+
+                background-color: #676767;
+                color: $white;
+
+                border-radius: 100px;
+
+                cursor: pointer;
+            }
+        }
+    }
+
+    &-nav {
+        display: flex;
+        align-items: center;
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: $gutter;
+
+            list-style: none;
+
+            li {
+                a {
+                    color: $black;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+}
