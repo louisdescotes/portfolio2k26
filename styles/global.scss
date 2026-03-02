@@ -3,7 +3,7 @@
 * {
     box-sizing: border-box;
 
-    font-family: $font , Verdana, Helvetica, sans-serif;
+    font-family: $font, Verdana, Helvetica, sans-serif;
     font-size: $font-size;
 
     scrollbar-width: thin;
@@ -41,7 +41,6 @@ header {
 .grid {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
-
 }
 
 .visualGrid {
@@ -65,9 +64,13 @@ header {
     }
 }
 
+a {
+    color: inherit;
+}
+
 *:focus {
     border-radius: 2px;
-    outline: 2px solid $primary;
+    outline: 2px solid $acent;
     outline-offset: 2px;
 }
 
@@ -131,10 +134,8 @@ html.lenis {
     padding: 0 $side-gap;
 }
 
-a,
 b {
     color: $acent;
-
 }
 
 /** MODIFY **/
