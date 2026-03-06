@@ -1,127 +1,159 @@
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueUltraLight.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueUltraLightItalic.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-ThinItalic.woff2") format("woff2");
   font-weight: 100;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueThin.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Extralight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueThinItalic.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-ExtralightItalic.woff2") format("woff2");
   font-weight: 200;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueLight.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueLightItalic.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-LightItalic.woff2") format("woff2");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueRoman.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueItalic.ttf") format("truetype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueMedium.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueMediumItalic.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-MediumItalic.woff2") format("woff2");
   font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueBold.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-SemiboldItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueBoldItalic.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-BoldItalic.woff2") format("woff2");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueHeavy.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Extrabold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueHeavyItalic.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-ExtraboldItalic.woff2") format("woff2");
   font-weight: 800;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueBlack.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueBlackItalic.otf") format("opentype");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-BlackItalic.woff2") format("woff2");
   font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-VariableItalic.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: italic;
   font-display: swap;
 }

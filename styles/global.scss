@@ -70,7 +70,7 @@ a {
 
 *:focus {
     border-radius: 2px;
-    outline: 2px solid $acent;
+    outline: 2px solid $primary;
     outline-offset: 2px;
 }
 
@@ -135,7 +135,7 @@ html.lenis {
 }
 
 b {
-    color: $acent;
+    color: $primary;
 }
 
 /** MODIFY **/

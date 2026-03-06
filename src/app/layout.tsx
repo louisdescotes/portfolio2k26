@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <ReactLenis root />
-      <body className="bg-black text-white">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
