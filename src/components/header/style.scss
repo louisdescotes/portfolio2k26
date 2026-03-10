@@ -1,0 +1,9 @@
+@use "@/styles/variables.scss" as *;
+
+header {
+    h1 {
+        font-family: $font;
+        font-size: 24px;
+        color: $primary;
+    }
+}

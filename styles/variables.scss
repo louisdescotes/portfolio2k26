@@ -1,12 +1,32 @@
 $font: "Switzer", sans-serif;
-$font-size: 18px;
+$font-size: 14px;
 
 $header-top: 20px;
 $side-gap-header: clamp(16px, 2.9167vw, 72px);
 $side-gap: max($side-gap-header, calc((100vw - 1860px) / 2));
 
-$primary: #FC6605;
-$black: #171717;
-$lightBlack: rgba($black, .75);
-$white: #FCFCFC;
-$grey: #E6E6E6;
+@layer base {
+    :root {
+        --primary: #FC6605;
+        --black: #171717;
+        --lightBlack: rgba(23, 23, 23, 0.75);
+        --white: #FCFCFC;
+        --grey: #E6E6E6;
+    }
+
+    @supports (color: oklch(0 0 0)) {
+        :root {
+            --primary: oklch(0.69 0.20 43.6);
+            --black: oklch(0.20 0 0);
+            --lightBlack: oklch(0.20 0 0 / 0.75);
+            --white: oklch(0.98 0 0);
+            --grey: oklch(0.90 0 0);
+        }
+    }
+}
+
+$primary: var(--primary);
+$black: var(--black);
+$lightBlack: var(--lightBlack);
+$white: var(--white);
+$grey: var(--grey);
