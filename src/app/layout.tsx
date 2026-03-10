@@ -2,7 +2,7 @@ import "@/styles/global.scss";
 import ReactLenis from "lenis/react";
 
 export const metadata = {
-  title: "Louis Descotes - Portfolio",
+  title: "Louis Descotes",
   description: "Développeur front-end et ui/ux designer",
 };
 

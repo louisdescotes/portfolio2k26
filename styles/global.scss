@@ -38,6 +38,17 @@ header {
     left: 0;
 }
 
+canvas {
+    display: block;
+}
+
+#canvas-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(11, 1fr);

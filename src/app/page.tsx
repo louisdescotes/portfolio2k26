@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <GridOverlay />
       <Header />
-      <main className="grid-p">
+      <main>
         <Landing />
       </main>
     </>
