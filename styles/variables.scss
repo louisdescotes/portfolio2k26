@@ -2,6 +2,7 @@ $font: "Switzer", sans-serif;
 $font-size: 14px;
 
 $header-top: 20px;
+$gap: 8px;
 $side-gap-header: clamp(16px, 2.9167vw, 72px);
 $side-gap: max($side-gap-header, calc((100vw - 1860px) / 2));
 

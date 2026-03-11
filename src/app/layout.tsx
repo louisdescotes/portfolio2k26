@@ -1,5 +1,6 @@
 import "@/styles/global.scss";
 import ReactLenis from "lenis/react";
+import GridOverlay from "./GridOverlay";
 
 export const metadata = {
   title: "Louis Descotes",
@@ -13,6 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <GridOverlay />
       <ReactLenis root />
       <body>{children}</body>
     </html>
