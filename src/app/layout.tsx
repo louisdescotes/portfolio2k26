@@ -1,6 +1,7 @@
 import "@/styles/global.scss";
 import ReactLenis from "lenis/react";
 import GridOverlay from "./GridOverlay";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Louis Descotes",
@@ -14,8 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <GridOverlay />
+      <Analytics />
       <ReactLenis root />
+      <GridOverlay />
       <body>{children}</body>
     </html>
   );
