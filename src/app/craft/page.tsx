@@ -10,7 +10,9 @@ const Craft = () => {
       <section>
         <OptimizedVideo src="/crafts/xp2" />
       </section>
-      <section></section>
+      <section>
+        <OptimizedVideo src="/crafts/xp3" />
+      </section>
     </main>
   );
 };
