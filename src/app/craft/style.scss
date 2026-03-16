@@ -10,6 +10,15 @@
 
     padding: 0 clamp(16px, 2.9167vw, 72px);
 
+    &-links {
+        position: fixed;
+        inset: 0;
+        left: 24px;
+        top: 24px;
+        color: $primary;
+        font-weight: 600;
+    }
+
     section {
         grid-column: auto / span 4;
         height: fit-content;

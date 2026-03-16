@@ -8,15 +8,40 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    gap: 24px;
 
     &-header {
         display: flex;
-        align-items: flex-end;
-        gap: $gap;
+        flex-direction: column;
+        align-items: center;
 
-        h1 {
-            line-height: 1.1;
+
+        &-title {
+            margin: 0;
+
+            max-width: 300px;
+            text-align: center;
+
+            &-word {
+                font-size: 24px;
+                display: inline-block;
+                will-change: filter, opacity, transform;
+
+                &-h1 {
+                    font-weight: 400;
+                    font-size: 16px;
+
+                    margin-bottom: 4px;
+
+                    color: $lightBlack;
+                }
+
+                &-h2 {
+                    font-weight: 500;
+
+                    color: $black;
+                }
+            }
         }
     }
 
@@ -25,5 +50,20 @@
         align-items: center;
         justify-content: center;
         gap: $gap;
+
+        color: $primary;
+
+        font-weight: 500;
+    }
+
+    &-second {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $gap;
+
+        color: $lightBlack;
+
+        font-weight: 500;
     }
 }
