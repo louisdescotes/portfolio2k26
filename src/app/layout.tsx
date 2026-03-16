@@ -15,10 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <Analytics />
-      <ReactLenis root />
-      <GridOverlay />
-      <body>{children}</body>
+      <body>
+        <ReactLenis root>
+          <GridOverlay />
+          {children}
+          <Analytics />
+        </ReactLenis>
+      </body>
     </html>
   );
 }

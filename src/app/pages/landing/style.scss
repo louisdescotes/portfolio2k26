@@ -1,14 +1,13 @@
 @use "@/styles/variables.scss" as *;
 
 .landing {
-    width: 100svw;
-    height: 100svh;
-
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 24px;
+
+    height: 100svh;
 
     &-header {
         display: flex;

@@ -7,7 +7,7 @@ const Landing = () => {
   const isClient = useIsClient();
 
   return (
-    <section className="landing">
+    <main className="landing">
       <motion.div
         initial={{ filter: "blur(4px)", opacity: 0, y: 10 }}
         animate={
@@ -73,7 +73,7 @@ const Landing = () => {
           Craft
         </Link>
       </motion.div>
-    </section>
+    </main>
   );
 };
 

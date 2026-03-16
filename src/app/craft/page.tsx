@@ -5,6 +5,7 @@ import OptimizedVideo from "@/src/components/optimizedVideo";
 import "./style.scss";
 import Link from "next/link";
 import PageTransition from "@/src/components/pageTransition";
+import CraftList from "./video";
 
 const Craft = () => {
   return (
@@ -23,15 +24,13 @@ const Craft = () => {
             Retour
           </Link>
         </motion.div>
-        <section>
-          <OptimizedVideo src="/crafts/xp1" />
-        </section>
-        <section>
-          <OptimizedVideo src="/crafts/xp2" />
-        </section>
-        <section>
-          <OptimizedVideo src="/crafts/xp3" />
-        </section>
+        {CraftList.map((video, index) => {
+          return (
+            <section key={video}>
+              <OptimizedVideo src={`/crafts/${video}`} />
+            </section>
+          );
+        })}
       </main>
     </PageTransition>
   );

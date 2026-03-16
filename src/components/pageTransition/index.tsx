@@ -11,12 +11,11 @@ export default function PageTransition({ children }: Props) {
 
   return (
     <motion.div
-      style={{ position: "fixed" }}
-      initial={{ filter: "blur(4px)", opacity: 0, y: 10 }}
+      initial={{ filter: "blur(4px)", opacity: 0 }}
       animate={
         isClient
-          ? { filter: "blur(0px)", opacity: 1, y: 0 }
-          : { filter: "blur(4px)", opacity: 0, y: 10 }
+          ? { filter: "blur(0px)", opacity: 1 }
+          : { filter: "blur(4px)", opacity: 0 }
       }
       transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
     >

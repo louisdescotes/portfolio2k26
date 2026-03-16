@@ -8,33 +8,32 @@
     width: 100%;
     height: auto;
 
-    padding: 0 clamp(16px, 2.9167vw, 72px);
+    padding: 42px clamp(16px, 2.9167vw, 72px);
 
     &-links {
-        position: fixed;
-        inset: 0;
-        left: 24px;
-        top: 24px;
+        grid-column: span 12;
+
+        margin-bottom: 24px;
+
         color: $primary;
         font-weight: 600;
     }
 
     section {
         grid-column: auto / span 4;
-        height: fit-content;
+        height: 100%;
 
-        @media (max-width: 800px) {
+        border: 1px solid $grey;
+        border-radius: 12px;
+
+        overflow: hidden;
+
+        @media (max-width: 960px) {
             grid-column: auto / span 6;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
             grid-column: auto / span 12;
-        }
-
-
-        video {
-            width: 100%;
-            height: auto;
         }
     }
 }

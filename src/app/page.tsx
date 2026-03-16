@@ -7,9 +7,7 @@ import PageTransition from "../components/pageTransition";
 const Home = () => {
   return (
     <PageTransition>
-      <main>
-        <Landing />
-      </main>
+      <Landing />
     </PageTransition>
   );
 };

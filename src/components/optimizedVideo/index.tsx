@@ -1,7 +1,7 @@
-// components/OptimizedVideo.tsx
 "use client";
 
 import { useRef, useEffect } from "react";
+import "./style.scss";
 
 interface OptimizedVideoProps {
   src: string;
@@ -38,7 +38,7 @@ const OptimizedVideo = ({ src, className }: OptimizedVideoProps) => {
       muted
       playsInline
       preload="none"
-      className={className}
+      className={`optimized-video ${className}`}
     >
       <source src={`${src}.webm`} type="video/webm; codecs=av01" />
       <source src={`${src}.mp4`} type='video/mp4; codecs="hvc1"' />
