@@ -18,7 +18,7 @@ const Landing = () => {
         transition={{
           duration: 1.4,
           ease: [0.22, 1, 0.36, 1],
-          delay: 1.2,
+          delay: 1,
         }}
         className="landing-second"
       >
@@ -65,7 +65,7 @@ const Landing = () => {
         transition={{
           duration: 1.4,
           ease: [0.22, 1, 0.36, 1],
-          delay: 1,
+          delay: 0.8,
         }}
         className="landing-links"
       >

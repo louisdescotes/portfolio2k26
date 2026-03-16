@@ -1,17 +1,16 @@
 "use client";
 
 import "@styles/global.scss";
-import Header from "../components/header";
 import Landing from "./pages/landing";
+import PageTransition from "../components/pageTransition";
 
 const Home = () => {
   return (
-    <>
-      <Header />
+    <PageTransition>
       <main>
         <Landing />
       </main>
-    </>
+    </PageTransition>
   );
 };
 

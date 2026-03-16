@@ -1,7 +1,7 @@
 @use "@/styles/variables.scss" as *;
 
 .landing {
-    width: 100%;
+    width: 100svw;
     height: 100svh;
 
     display: flex;
@@ -54,6 +54,7 @@
         color: $primary;
 
         font-weight: 500;
+        will-change: filter, opacity, transform;
     }
 
     &-second {
@@ -65,5 +66,6 @@
         color: $lightBlack;
 
         font-weight: 500;
+        will-change: filter, opacity, transform;
     }
 }
