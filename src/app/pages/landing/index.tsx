@@ -1,13 +1,20 @@
 import "./style.scss";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { useIsClient } from "@/hooks/useIsClient";
 
 const Landing = () => {
+  const isClient = useIsClient();
+
   return (
     <section className="landing">
       <motion.div
         initial={{ filter: "blur(4px)", opacity: 0, y: 10 }}
-        animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+        animate={
+          isClient
+            ? { filter: "blur(0px)", opacity: 1, y: 0 }
+            : { filter: "blur(4px)", opacity: 0, y: 10 }
+        }
         transition={{
           duration: 1.4,
           ease: [0.22, 1, 0.36, 1],
@@ -37,17 +44,24 @@ const Landing = () => {
           Mail
         </Link>
       </motion.div>
+
       <div className="landing-header">
-        <AnimatedHeading text="Louis DESCOTES" />
+        <AnimatedHeading text="Louis DESCOTES" isClient={isClient} />
         <AnimatedHeading
           delay={0.1}
           as="h2"
           text="Developpeur front-end et UI/UX Designer"
+          isClient={isClient}
         />
       </div>
+
       <motion.div
         initial={{ filter: "blur(4px)", opacity: 0, y: 10 }}
-        animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+        animate={
+          isClient
+            ? { filter: "blur(0px)", opacity: 1, y: 0 }
+            : { filter: "blur(4px)", opacity: 0, y: 10 }
+        }
         transition={{
           duration: 1.4,
           ease: [0.22, 1, 0.36, 1],
@@ -62,6 +76,7 @@ const Landing = () => {
     </section>
   );
 };
+
 export default Landing;
 
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -71,6 +86,7 @@ interface AnimatedHeadingProps {
   as?: HeadingTag;
   staggerDelay?: number;
   delay?: number;
+  isClient: boolean;
 }
 
 const AnimatedHeading = ({
@@ -78,6 +94,7 @@ const AnimatedHeading = ({
   as: Tag = "h1",
   delay = 0,
   staggerDelay = 0.06,
+  isClient,
 }: AnimatedHeadingProps) => {
   const words = text.split(" ");
 
@@ -88,7 +105,11 @@ const AnimatedHeading = ({
           key={i}
           className={`landing-header-title-word landing-header-title-word-${Tag}`}
           initial={{ filter: "blur(4px)", opacity: 0, y: 10 }}
-          animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+          animate={
+            isClient
+              ? { filter: "blur(0px)", opacity: 1, y: 0 }
+              : { filter: "blur(4px)", opacity: 0, y: 10 }
+          }
           transition={{
             duration: 1.4,
             ease: [0.22, 1, 0.36, 1],
