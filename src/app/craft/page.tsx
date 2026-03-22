@@ -24,10 +24,21 @@ const Craft = () => {
             Retour
           </Link>
         </motion.div>
-        {CraftList.map((video, index) => {
+        {Object.values(CraftList).map((video) => {
           return (
-            <section key={video}>
-              <OptimizedVideo src={`/crafts/${video}`} />
+            <section key={video.name}>
+              <OptimizedVideo src={`/crafts/${video.name}`} />
+
+              <div className="craft-tag">
+                {video.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`craft-tag-name craft-tag-name-${video.colorTag}`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </section>
           );
         })}

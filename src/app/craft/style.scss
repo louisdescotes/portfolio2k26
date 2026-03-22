@@ -20,6 +20,7 @@
     }
 
     section {
+        position: relative;
         grid-column: auto / span 4;
         height: 100%;
 
@@ -35,5 +36,20 @@
         @media (max-width: 480px) {
             grid-column: auto / span 12;
         }
+    }
+
+    &-tag {
+        position: absolute;
+        inset: 12px;
+
+        padding: 4px 8px;
+        border-radius: 8px;
+
+        width: fit-content;
+        height: fit-content;
+
+        background-color: $grey;
+        background-blend-mode: overlay;
+        color: $black;
     }
 }
