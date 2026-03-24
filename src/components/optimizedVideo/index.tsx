@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { useIsClient } from "@/hooks/useIsClient";
 import "./style.scss";
 
 interface OptimizedVideoProps {
@@ -17,8 +18,7 @@ const OptimizedVideo = ({
   className,
 }: OptimizedVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  console.log("blurDataURL:", blurDataURL); // ← ajoute ça
+  const isClient = useIsClient();
 
   useEffect(() => {
     const video = videoRef.current;
@@ -42,7 +42,7 @@ const OptimizedVideo = ({
 
   return (
     <div className={`optimized-video-wrapper ${className ?? ""}`}>
-      {blurDataURL && (
+      {isClient && blurDataURL && (
         <img
           aria-hidden="true"
           alt=""
