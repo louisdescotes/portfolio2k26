@@ -5,10 +5,17 @@ import "./style.scss";
 
 interface OptimizedVideoProps {
   src: string;
+  poster?: string;
+  blurDataURL?: string;
   className?: string;
 }
 
-const OptimizedVideo = ({ src, className }: OptimizedVideoProps) => {
+const OptimizedVideo = ({
+  src,
+  poster,
+  blurDataURL,
+  className,
+}: OptimizedVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -32,18 +39,34 @@ const OptimizedVideo = ({ src, className }: OptimizedVideoProps) => {
   }, []);
 
   return (
-    <video
-      ref={videoRef}
-      loop
-      muted
-      playsInline
-      preload="none"
-      className={`optimized-video ${className}`}
-    >
-      <source src={`${src}.webm`} type="video/webm; codecs=av01" />
-      <source src={`${src}.mp4`} type='video/mp4; codecs="hvc1"' />
-      <source src={`${src}.mp4`} type="video/mp4" />
-    </video>
+    <div className={`optimized-video-wrapper ${className ?? ""}`}>
+      {blurDataURL && (
+        <img
+          aria-hidden="true"
+          alt=""
+          src={blurDataURL}
+          className="optimized-video-wrapper-placeholder"
+        />
+      )}
+
+      <video
+        ref={videoRef}
+        loop
+        muted
+        playsInline
+        preload="none"
+        poster={poster}
+        className="optimized-video"
+        onCanPlay={(e) => {
+          (e.target as HTMLVideoElement).style.opacity = "1";
+        }}
+        style={{ opacity: 0, transition: "opacity 0.4s ease" }}
+      >
+        <source src={`${src}.webm`} type="video/webm; codecs=av01" />
+        <source src={`${src}.mp4`} type='video/mp4; codecs="hvc1"' />
+        <source src={`${src}.mp4`} type="video/mp4" />
+      </video>
+    </div>
   );
 };
 

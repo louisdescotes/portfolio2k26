@@ -27,7 +27,11 @@ const Craft = () => {
         {Object.values(CraftList).map((video) => {
           return (
             <section key={video.name}>
-              <OptimizedVideo src={`/crafts/${video.name}`} />
+              <OptimizedVideo
+                src={`/crafts/${video.name}`}
+                poster={`/crafts/${video.name}-poster.jpg`}
+                blurDataURL={video.blurDataURL}
+              />
 
               <div className="craft-tag">
                 {video.tags.map((tag) => (

@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "generate:blur": "node scripts/generate-blur-placeholders.mjs",
+    "prebuild": "node scripts/generate-blur-placeholders.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
