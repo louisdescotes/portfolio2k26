@@ -2,6 +2,13 @@ import { execSync } from "child_process";
 import { existsSync, writeFileSync } from "fs";
 import { join } from "path";
 
+try {
+  execSync("ffmpeg -version", { stdio: "ignore" });
+} catch {
+  console.log("⚠ ffmpeg not found, skipping blur placeholder generation");
+  process.exit(0); // Sort sans erreur, sans toucher au fichier
+}
+
 const CRAFTS_DIR = "public/crafts";
 const OUTPUT_FILE = "src/app/craft/video.ts";
 
