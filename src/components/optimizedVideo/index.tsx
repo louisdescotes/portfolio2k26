@@ -18,6 +18,8 @@ const OptimizedVideo = ({
 }: OptimizedVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  console.log("blurDataURL:", blurDataURL); // ← ajoute ça
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
