@@ -69,6 +69,9 @@ const Landing = () => {
         }}
         className="landing-links"
       >
+        <Link className="type-16" href="/noemie">
+          Noemie
+        </Link>
         <Link className="type-16" href="/craft">
           Craft
         </Link>
