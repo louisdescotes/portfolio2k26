@@ -2,54 +2,32 @@
 
 .craft {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
     gap: $gap;
 
     width: 100%;
     height: auto;
 
-    padding: 42px clamp(16px, 2.9167vw, 72px);
+    padding: 80px 8px 8px 8px;
 
-    &-links {
-        grid-column: span 12;
-
-        margin-bottom: 24px;
-
-        color: $primary;
-        font-weight: 600;
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 120px 42px 42px 42px;
     }
 
-    section {
+    &-wrapper {
         position: relative;
-        grid-column: auto / span 4;
-        height: 100%;
 
-        border: 1px solid $grey;
-        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        overflow: hidden;
-
-        @media (max-width: 960px) {
-            grid-column: auto / span 6;
-        }
-
-        @media (max-width: 480px) {
-            grid-column: auto / span 12;
-        }
-    }
-
-    &-tag {
-        position: absolute;
-        inset: 12px;
-
-        padding: 4px 8px;
-        border-radius: 8px;
-
-        width: fit-content;
-        height: fit-content;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 1.3 / 1;
 
         background-color: $grey;
-        background-blend-mode: overlay;
-        color: $black;
+
+        border-radius: 12px;
+        corner-shape: superellipse(1.2);
     }
 }

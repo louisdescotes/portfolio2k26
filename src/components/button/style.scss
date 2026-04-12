@@ -1,0 +1,24 @@
+@use "@/styles/variables.scss" as *;
+
+.button-link {
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    width: fit-content;
+    height: fit-content;
+
+    padding: 8px 8px 8px 9px;
+
+    color: $primary;
+    background: $grey;
+    border-radius: 4px;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.156px;
+}

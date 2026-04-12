@@ -1,8 +1,10 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useRef, useEffect } from "react";
 import { useIsClient } from "@/hooks/useIsClient";
 import "./style.scss";
+import Image from "next/image";
 
 interface OptimizedVideoProps {
   src: string;
@@ -42,32 +44,38 @@ const OptimizedVideo = ({
 
   return (
     <div className={`optimized-video-wrapper ${className ?? ""}`}>
-      {isClient && blurDataURL && (
-        <img
-          aria-hidden="true"
-          alt=""
-          src={blurDataURL}
-          className="optimized-video-wrapper-placeholder"
-        />
-      )}
-
-      <video
-        ref={videoRef}
-        loop
-        muted
-        playsInline
-        preload="none"
-        poster={poster}
+      <motion.div
+        initial={{ y: "200px", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
         className="optimized-video"
-        onCanPlay={(e) => {
-          (e.target as HTMLVideoElement).style.opacity = "1";
-        }}
-        style={{ opacity: 0, transition: "opacity 0.4s ease" }}
       >
-        <source src={`${src}.webm`} type="video/webm; codecs=av01" />
-        <source src={`${src}.mp4`} type='video/mp4; codecs="hvc1"' />
-        <source src={`${src}.mp4`} type="video/mp4" />
-      </video>
+        {isClient && blurDataURL && (
+          <Image
+            aria-hidden="true"
+            alt=""
+            width={629}
+            height={353}
+            src={blurDataURL}
+            className="optimized-video-placeholder"
+          />
+        )}
+        <video
+          ref={videoRef}
+          loop
+          muted
+          playsInline
+          preload="none"
+          poster={poster}
+          onCanPlay={(e) => {
+            (e.target as HTMLVideoElement).style.opacity = "1";
+          }}
+        >
+          <source src={`${src}.webm`} type="video/webm; codecs=av01" />
+          <source src={`${src}.mp4`} type='video/mp4; codecs="hvc1"' />
+          <source src={`${src}.mp4`} type="video/mp4" />
+        </video>
+      </motion.div>
     </div>
   );
 };

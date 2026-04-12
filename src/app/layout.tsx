@@ -1,8 +1,9 @@
 import "@/styles/global.scss";
 import ReactLenis from "lenis/react";
-import GridOverlay from "./GridOverlay";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ViewTransitions } from "next-view-transitions";
+import PageController from "../components/pageController";
 
 export const metadata = {
   title: "Louis Descotes",
@@ -15,15 +16,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body>
-        <ReactLenis root>
-          <GridOverlay />
-          {children}
-          <Analytics />
-          <SpeedInsights />
-        </ReactLenis>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="fr">
+        <body>
+          <ReactLenis root>
+            <PageController>{children}</PageController>
+          </ReactLenis>
+        </body>
+        <SpeedInsights />
+        <Analytics />
+      </html>
+    </ViewTransitions>
   );
 }

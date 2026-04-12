@@ -29,7 +29,6 @@
       "source": {
         "organizeImports": "on"
       }
-    },
-    "ignoreFiles": ["**/*.scss", "**/*.css"]
+    }
   }
 }
