@@ -13,9 +13,9 @@ const CRAFTS_DIR = "public/crafts";
 const OUTPUT_FILE = "src/app/craft/video.ts";
 
 const videos = [
-  { name: "xp4" },
   { name: "xp1" },
   { name: "xp2" },
+  { name: "xp4" },
   { name: "xp3" },
 ];
 function generatePoster(videoPath, posterPath) {
