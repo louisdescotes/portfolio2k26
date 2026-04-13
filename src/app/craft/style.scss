@@ -1,4 +1,5 @@
 @use "@/styles/variables.scss" as *;
+@use "@/styles/size.scss" as *;
 
 .craft {
     display: grid;
@@ -7,11 +8,8 @@
     width: 100%;
     height: auto;
 
-    padding: 10svh 8px 8px 8px;
-
     @media (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
-        padding: 20svh 42px 42px 42px;
     }
 
     &-header {
@@ -19,12 +17,11 @@
             grid-column: span 2;
         }
 
-        h1 {
+        &-title {
             margin: 0;
 
+            @include t-40;
             font-weight: 400;
-            line-height: 100%;
-            letter-spacing: -1.32%;
 
             color: $primary;
         }

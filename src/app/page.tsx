@@ -6,7 +6,7 @@ import "./style.scss";
 
 const Home = () => {
   return (
-    <div className="home">
+    <div className="home container">
       <div className="animation-overflow">
         <motion.span
           className="subtitle"

@@ -7,7 +7,7 @@ import CraftList from "./video";
 
 const Craft = () => {
   return (
-    <div className="craft">
+    <div className="craft container">
       <div className="craft-header animation-overflow">
         <motion.h1
           initial={{ y: "100%" }}
@@ -17,7 +17,7 @@ const Craft = () => {
             duration: 1.2,
             ease: [0.76, 0, 0.24, 1],
           }}
-          className=" type-80"
+          className="craft-header-title"
         >
           Craft
         </motion.h1>

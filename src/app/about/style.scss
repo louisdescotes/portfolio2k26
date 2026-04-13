@@ -1,4 +1,5 @@
 @use "@/styles/variables.scss" as *;
+@use "@/styles/size.scss" as *;
 
 .about {
     display: flex;
@@ -7,15 +8,10 @@
 
     width: 100%;
     height: 100svh;
-    max-width: 1440px;
-    margin: 0 auto;
-
-    padding: 10svh 8px 8px 8px;
 
     @media (min-width: 768px) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        padding: 20svh 42px 42px 42px;
     }
 
     &-header {
@@ -25,61 +21,49 @@
         height: fit-content;
 
         &-title {
-            margin: 0;
-
+            @include t-40;
             font-weight: 400;
-            line-height: 100%;
-            letter-spacing: -1.32%;
+
+            margin: 0;
 
             color: $primary;
         }
     }
 
     &-description {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
+        max-width: 800px;
 
         &-me {
+            @include t-20;
             margin: 0;
 
-            &:nth-last-child(1) {
-                padding-top: 42px;
-            }
+            padding-bottom: 24px;
+
 
             &-job {
                 opacity: .65;
+            }
+        }
 
-                a {
-                    font-size: 24px;
+        &-others {
+            &-services {
+                &-detail {
+                    margin: 0;
+                    padding-left: 16px;
+
+                    @include t-16;
                 }
             }
-        }
-    }
 
-    &-others {
-        display: flex;
-        flex-direction: column;
-        gap: calc(8 * 4);
-
-        width: 100%;
-
-        &-services {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-
-            &-detail {
-                margin: 0;
-                padding-left: 16px;
+            &-socials {
+                margin-top: 24px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
             }
         }
-
-        &-socials {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 16px;
-        }
     }
+
+
 }
