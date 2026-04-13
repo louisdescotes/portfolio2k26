@@ -10,36 +10,33 @@ const Nav = () => {
 
   const routes = [
     { label: "Home", url: "/" },
-    // { label: "About", url: "/about" },
+    { label: "About", url: "/about" },
     { label: "Craft", url: "/craft" },
     // { label: "Blog", url: "/blog" },
   ];
 
   return (
-    <>
-      {/* <span className="header-name">louis descotes</span> */}
-      <nav>
-        <ul>
-          {routes.map((route) => (
-            <li key={route.label}>
-              <Link
-                data-active={pathname === route.url}
-                href={route.url}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (pathname === route.url) return;
-                  router.push(route.url, {
-                    onTransitionReady: pageAnimation,
-                  });
-                }}
-              >
-                {route.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </>
+    <nav>
+      <ul>
+        {routes.map((route) => (
+          <li key={route.label}>
+            <Link
+              data-active={pathname === route.url}
+              href={route.url}
+              onClick={(e) => {
+                e.preventDefault();
+                if (pathname === route.url) return;
+                router.push(route.url, {
+                  onTransitionReady: pageAnimation,
+                });
+              }}
+            >
+              {route.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
