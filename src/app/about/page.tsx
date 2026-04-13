@@ -40,7 +40,7 @@ const About = () => {
               A propos de moi
             </motion.span>
           </div>
-          <p className="about-description-me">
+          <p className="about-description-me type-24">
             Moi c'est Louis Descotes, développeur front-end et ui/ux designer en
             alternance chez{" "}
             <span className="about-description-me-job">
@@ -50,7 +50,7 @@ const About = () => {
             </span>{" "}
             à Strasbourg, France.
           </p>
-          <p className="about-description-me">
+          <p className="about-description-me type-24">
             Passionné par le web et le design, je m’inspire des sites primés
             pour recréer et réinventer des effets interactifs captivant qui
             enrichissent l’expérience utilisateur

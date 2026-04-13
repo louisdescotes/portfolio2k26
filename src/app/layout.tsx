@@ -1,5 +1,6 @@
-import "@/styles/global.scss";
 import ReactLenis from "lenis/react";
+import "@/styles/global.scss";
+
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ViewTransitions } from "next-view-transitions";

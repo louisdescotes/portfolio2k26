@@ -1,0 +1,125 @@
+:root {
+    --gap: 2em;
+    --section-padding: calc(3.5em + (var(--gap) * 2));
+    --container-padding: 2em;
+    --header-height: calc(1.5em + (var(--gap) * 2));
+    --footer-height: calc(2.785em + (var(--gap) * 2));
+}
+
+@media screen and (max-width: 991px) {
+    :root {
+        --container-padding: 1.5em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    :root {
+        --container-padding: 1em;
+        --section-padding: calc(var(--gap) * 2);
+    }
+}
+
+:root {
+    --size-unit: 16;
+    --size-container-ideal: 1440;
+    --size-container-min: 992px;
+    --size-container-max: 1920px;
+    --size-container: clamp(var(--size-container-min),
+            100vw,
+            var(--size-container-max));
+    --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+}
+
+@media screen and (max-width: 991px) {
+    :root {
+        --size-container-ideal: 834;
+        --size-container-min: 768px;
+        --size-container-max: 991px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    :root {
+        --size-container-ideal: 390;
+        --size-container-min: 480px;
+        --size-container-max: 767px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    :root {
+        --size-container-ideal: 440;
+        --size-container-min: 0px;
+        --size-container-max: 479px;
+    }
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 7.5em;
+    font-weight: 500;
+    line-height: 1;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 5em;
+    font-weight: 500;
+    line-height: 1.05;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2.5em;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.75em;
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+h5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.25em;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.container {
+    z-index: 1;
+    max-width: var(--size-container);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 4em;
+    }
+
+    h2 {
+        font-size: 3.25em;
+    }
+}
