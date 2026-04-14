@@ -1,25 +1,25 @@
 @layer base {
     :root {
-        --primary: #FC6605;
+        --primary: #FC5305;
+        --primary-light: #FC5305E6;
         --black: #171717;
-        --lightBlack: rgba(23, 23, 23, 0.75);
         --white: #FCFCFC;
-        --grey: #F8F8F8;
+        --grey: #f5f5f5;
     }
 
     @supports (color: oklch(0 0 0)) {
         :root {
-            --primary: oklch(0.69 0.20 43.6);
+            --primary: oklch(0.669 0.2159 38.31);
+            --primary-light: oklch(0.6683 0.2175 38.09 / 90%);
             --black: oklch(0.20 0 0);
-            --lightBlack: oklch(0.20 0 0 / 0.75);
             --white: oklch(0.98 0 0);
-            --grey: oklch(0.9791 0 0)
+            --grey: oklch(0.97 0 0)
         }
     }
 }
 
 $primary: var(--primary);
+$primary-light: var(--primary-light);
 $black: var(--black);
-$lightBlack: var(--lightBlack);
 $white: var(--white);
 $grey: var(--grey);
