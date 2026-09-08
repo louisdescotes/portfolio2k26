@@ -1,0 +1,80 @@
+---
+title: Patience
+type: Expérience Three.js / WebGL
+description: "Expérience WebGL immersive autour de la patience : scroll narratif, personnage 3D et interactions qui ralentissent le rythme d’une interface trop rapide."
+muxPlaybackId: UJd3nYazdRtAJjKsCVHPsUU1finPIq2TAZQf3lj007cg
+coverVideo: /projets/patience/cover-patience.mp4
+coverPoster: /projets/patience/cover-patience-poster.jpg
+order: 2
+---
+
+import Video from '../../components/Video.astro';
+
+<div class="separator" />
+<div class="separator" />
+<p class="text-subtitle">Immersion</p>
+## Dans un monde impatient, ralentir devient un geste.
+L’ouverture place l’utilisateur dans un paysage calme (herbe, papillons, typographie douce) pour poser le contraste avec les interfaces habituelles. Le message est clair dès le premier écran : retrouver sa patience, pas la fuir.
+<div class="separator" />
+<Video
+  src="/projets/patience/patience-home.mp4"
+  poster="/projets/patience/patience-home-poster.jpg"
+  title="Patience - Accueil immersif"
+  loop
+/>
+<Video
+  src="/projets/patience/butterfly.webm"
+  poster="/projets/patience/butterfly-poster.jpg"
+  title="Patience - Papillons"
+  loop
+/>
+<div class="separator" />
+<div class="separator" />
+<p class="text-subtitle">Scroll</p>
+## Le scroll devient le rythme de l’histoire.
+Chaque déplacement vertical fait évoluer la scène plutôt que de la remplacer. L’expérience pousse à observer, à attendre la suite, et à accepter un tempo plus lent que celui d’un feed classique.
+<div class="separator" />
+<Video
+  src="/projets/patience/patience-scroll.mp4"
+  poster="/projets/patience/patience-scroll-poster.jpg"
+  title="Patience - Animation de scroll"
+  loop
+/>
+<div class="separator" />
+<div class="separator" />
+<p class="text-subtitle">Interaction</p>
+## La solution n’est pas de tout arrêter.
+Une section clé confronte les fausses réponses (se forcer à être calme, faire plus d’efforts, prendre sur soi) et propose une autre voie : réapprendre le rythme naturel du temps. Un champ avec sablier ancre cette idée dans une micro-interaction.
+<div class="separator" />
+<Video
+  src="/projets/patience/patience-hole.mp4"
+  poster="/projets/patience/patience-hole-poster.jpg"
+  title="Patience - Section interactive"
+  loop
+/>
+<div class="separator" />
+<div class="separator" />
+<p class="text-subtitle">Personnage</p>
+## Un corps 3D pour parler de gratification immédiate.
+Le personnage métallique porte le message sur les micro-récompenses du numérique (likes, notifications, réponses instantanées) et montre comment l’attente devient difficile à tolérer. La mise en page couple le rendu 3D au texte pour garder le personnage au centre du récit.
+<div class="separator" />
+<div class="image-row-tier">
+<div class="character-background">
+<Video
+  src="/projets/patience/character.mp4"
+  poster="/projets/patience/character-poster.jpg"
+  title="Patience - Personnage 3D"
+  loop
+/>
+</div>
+<Video
+  src="/projets/patience/patience-character.mp4"
+  poster="/projets/patience/patience-character-poster.jpg"
+  title="Patience - Gratification immédiate"
+  loop
+/>
+</div>
+<div class="separator" />
+<div class="separator" />
+## Technologies
+Le projet repose sur Next.js pour la structure, Three.js et WebGL pour la scène 3D et les effets de profondeur, avec des shaders pour les transitions visuelles. Framer Motion gère les animations d’interface plus fines autour du scroll et des micro-interactions.
