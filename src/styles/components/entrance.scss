@@ -38,8 +38,9 @@
 			transform: translateY(8px);
 		}
 
-		/* Media: translateY + opacity */
-		[data-animate-media] {
+		/* Media + body below hero: translateY + opacity */
+		[data-animate-media],
+		[data-animate-rest] {
 			opacity: 0;
 			transform: translateY(22px);
 		}
@@ -47,10 +48,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+	/* Keep opacity comprehension; drop travel */
 	[data-entrance] {
 		[data-animate-text] .line > *,
 		[data-animate-back],
-		[data-animate-media] {
+		[data-animate-media],
+		[data-animate-rest] {
 			opacity: 1 !important;
 			transform: none !important;
 		}

@@ -1,10 +1,16 @@
 /**
  * Splits an element's text into overflow-masked line spans for reveal animation.
  * Mirrors the measure-then-wrap approach used by AnimatedText / useSplitLines.
+ *
+ * Reserves the pre-split height so clearing textContent cannot collapse the
+ * block and shift media / body content (CLS).
  */
 export function splitElementIntoLines(element: HTMLElement): HTMLSpanElement[] {
 	const text = element.textContent?.replace(/\s+/g, ' ').trim() ?? '';
 	if (text === '') return [];
+
+	const reservedHeight = element.getBoundingClientRect().height;
+	if (reservedHeight > 0) element.style.minHeight = `${reservedHeight}px`;
 
 	element.setAttribute('aria-label', text);
 	element.textContent = '';
@@ -38,7 +44,7 @@ export function splitElementIntoLines(element: HTMLElement): HTMLSpanElement[] {
 	if (current !== '') lines.push(current);
 	measure.remove();
 
-	return lines.map((line) => {
+	const inners = lines.map((line) => {
 		const lineEl = document.createElement('span');
 		lineEl.className = 'line';
 		lineEl.setAttribute('aria-hidden', 'true');
@@ -53,4 +59,7 @@ export function splitElementIntoLines(element: HTMLElement): HTMLSpanElement[] {
 
 		return inner;
 	});
+
+	// minHeight stays until entrance settles — cleared in markEntranceDone.
+	return inners;
 }

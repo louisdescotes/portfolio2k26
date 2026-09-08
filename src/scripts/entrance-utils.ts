@@ -2,7 +2,7 @@ import { animate, stagger } from 'motion';
 import { ENTRANCE_TWEEN, LINE_STAGGER_S, TEXT_REVEAL } from './motion-tokens';
 import { splitElementIntoLines } from './split-lines';
 
-const MEDIA_READY_TIMEOUT_MS = 2500;
+const MEDIA_READY_TIMEOUT_MS = 1200;
 const MEDIA_OFFSET_Y = 22;
 
 export const prefersReducedMotion = () =>
@@ -26,12 +26,17 @@ export const resetInlineMotion = (element: HTMLElement) => {
 };
 
 export const markEntranceDone = (root: HTMLElement) => {
-	root.querySelectorAll<HTMLElement>('[data-animate-back], [data-animate-media]').forEach(
-		resetInlineMotion,
-	);
+	root
+		.querySelectorAll<HTMLElement>(
+			'[data-animate-back], [data-animate-media], [data-animate-rest]',
+		)
+		.forEach(resetInlineMotion);
 	root
 		.querySelectorAll<HTMLElement>('[data-animate-text] .line > *')
 		.forEach(resetInlineMotion);
+	root.querySelectorAll<HTMLElement>('[data-animate-text]').forEach((element) => {
+		element.style.minHeight = '';
+	});
 	root.dataset.entrance = 'done';
 };
 
@@ -53,9 +58,12 @@ export const revealLines = (
 
 	for (const line of lines) line.style.willChange = 'transform';
 
+	// Full `transform` string — Motion `y` shorthand is main-thread / rAF.
 	return animate(
 		lines,
-		{ y: [fromY, toY] },
+		{
+			transform: [`translateY(${fromY})`, `translateY(${toY})`],
+		},
 		{
 			...TEXT_REVEAL,
 			delay: stagger(lineStagger, { startDelay: startMs / 1000 }),
@@ -98,48 +106,37 @@ const loadPoster = (url: string) =>
 		img.src = url;
 	});
 
-const waitForPlayerReady = (player: HTMLElement) =>
-	new Promise<void>((resolve) => {
-		const media = player as HTMLMediaElement;
-		if (typeof media.readyState === 'number' && media.readyState >= 1) {
-			resolve();
-			return;
-		}
-
-		const done = () => {
-			player.removeEventListener('loadedmetadata', done);
-			player.removeEventListener('loadeddata', done);
-			resolve();
-		};
-
-		player.addEventListener('loadedmetadata', done, { once: true });
-		player.addEventListener('loadeddata', done, { once: true });
-	});
-
-/** Wait for poster / first frame so we don't fade in an empty shell. */
+/**
+ * Poster is enough to fade the cover in — don't block on mux-video metadata
+ * (can stall for seconds on mobile).
+ */
 export const waitForMediaReady = async (container: HTMLElement) => {
 	const player = container.querySelector<HTMLElement>('video, mux-video');
 	if (!player) return;
 
 	const poster = player.getAttribute('poster');
-	const tasks: Array<Promise<void>> = [];
+	if (!poster) return;
 
-	if (poster) tasks.push(loadPoster(poster));
-	tasks.push(waitForPlayerReady(player));
-
-	await Promise.race([Promise.all(tasks), sleep(MEDIA_READY_TIMEOUT_MS)]);
+	await Promise.race([loadPoster(poster), sleep(MEDIA_READY_TIMEOUT_MS)]);
 };
 
 /**
+ * Delay (ms) from now so a storyboard `atMs` still lands on the clock,
+ * after an async gate like poster load.
+ */
+export const remainingDelayMs = (atMs: number, entranceStartedAt: number) =>
+	Math.max(0, atMs - (performance.now() - entranceStartedAt));
+
+/**
  * Media entrance: translateY + opacity.
- * Honors storyboard `atMs`, but never before media is ready.
- * Returns the same `{ finished }` shape as other reveals so callers can settle uniformly.
+ * Honors storyboard `atMs`, but never before the poster is ready.
+ * Pass a prefetched `ready` promise so poster load overlaps copy reveals.
  */
 export const revealMediaFadeUp = (
 	element: HTMLElement,
 	atMs: number,
 	entranceStartedAt: number,
-	options: { offsetY?: number } = {},
+	options: { offsetY?: number; ready?: Promise<void> } = {},
 ): { finished: Promise<unknown> } => {
 	const offsetY = options.offsetY ?? MEDIA_OFFSET_Y;
 
@@ -148,10 +145,7 @@ export const revealMediaFadeUp = (
 	element.style.willChange = 'transform, opacity';
 
 	const finished = (async () => {
-		await waitForMediaReady(element);
-
-		const elapsed = performance.now() - entranceStartedAt;
-		const delaySec = Math.max(0, atMs - elapsed) / 1000;
+		await (options.ready ?? waitForMediaReady(element));
 
 		const animation = animate(
 			element,
@@ -161,7 +155,7 @@ export const revealMediaFadeUp = (
 			},
 			{
 				...ENTRANCE_TWEEN,
-				delay: delaySec,
+				delay: remainingDelayMs(atMs, entranceStartedAt) / 1000,
 			},
 		);
 

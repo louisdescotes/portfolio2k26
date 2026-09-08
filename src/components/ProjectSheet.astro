@@ -35,7 +35,9 @@ const { title, type, description, muxPlaybackId } = Astro.props;
 			<div class="project-page-hero-media" data-animate-media>
 				<MuxVideo playbackId={muxPlaybackId} title={title} loop />
 			</div>
-			<slot />
+			<div data-animate-rest>
+				<slot />
+			</div>
 		</div>
 	</Wrapper>
 </article>

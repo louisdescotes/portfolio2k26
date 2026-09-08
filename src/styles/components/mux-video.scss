@@ -4,22 +4,23 @@
   position: relative;
   display: block;
   width: 100%;
-  height: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--media-ratio, 16 / 9);
   overflow: hidden;
   border-radius: $radius-media;
   background: $media-placeholder;
 
   mux-video,
   video {
-  --media-object-fit: cover;
-  --media-object-position: center;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: var(--media-object-fit, cover);
-  object-position: var(--media-object-position, center);
-  border-radius: inherit;
-  pointer-events: none;
+    --media-object-fit: cover;
+    --media-object-position: center;
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: var(--media-object-fit, cover);
+    object-position: var(--media-object-position, center);
+    border-radius: inherit;
+    pointer-events: none;
   }
 }

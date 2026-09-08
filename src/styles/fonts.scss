@@ -1,5 +1,15 @@
 :root {
-  --Manrope-font: "Manrope";
+  --Manrope-font: "Manrope", "Manrope Fallback";
+}
+
+/* Metric-matched Arial so font-display:swap does not reflow project headers. */
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial"), local("Helvetica"), local("sans-serif");
+  size-adjust: 102.95%;
+  ascent-override: 105%;
+  descent-override: 25%;
+  line-gap-override: 0%;
 }
 
 @font-face {
