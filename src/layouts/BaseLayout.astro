@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import '../styles/fonts.scss';
 import '../styles/global.scss';
 import '../styles/view-transitions.scss';
@@ -67,5 +68,6 @@ const themeColor = '#fe5505';
 		<script>
 			import '../scripts/page-init.ts';
 		</script>
+		<SpeedInsights />
 	</body>
 </html>
