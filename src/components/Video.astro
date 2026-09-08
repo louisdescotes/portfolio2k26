@@ -1,6 +1,8 @@
 ---
 interface Props {
 	src: string;
+	/** Safari HEVC-with-alpha (.mov) — pair with a VP9 WebM `src` for transparent video. */
+	srcMov?: string;
 	title: string;
 	loop?: boolean;
 	poster?: string;
@@ -13,6 +15,7 @@ interface Props {
 
 const {
 	src,
+	srcMov,
 	title,
 	loop = false,
 	poster,
@@ -24,6 +27,7 @@ const {
 
 const mediaRatio = width / height;
 const orientation = mediaRatio < 1 ? 'portrait' : 'landscape';
+const isWebm = src.endsWith('.webm');
 ---
 
 <>
@@ -34,7 +38,6 @@ const orientation = mediaRatio < 1 ? 'portrait' : 'landscape';
 		style={`--media-ratio: ${mediaRatio}`}
 	>
 		<video
-			src={src}
 			poster={poster}
 			title={title}
 			muted
@@ -43,7 +46,18 @@ const orientation = mediaRatio < 1 ? 'portrait' : 'landscape';
 			loop={loop || undefined}
 			width={width}
 			height={height}
-		></video>
+			src={srcMov ? undefined : src}
+			data-has-alpha={srcMov ? 'true' : undefined}
+		>
+			{
+				srcMov && (
+					<>
+						<source src={srcMov} type="video/quicktime" />
+						<source src={src} type={isWebm ? 'video/webm' : 'video/mp4'} />
+					</>
+				)
+			}
+		</video>
 	</div>
 	{subtitleVideo && <p class="project-video-subtitle">{subtitleVideo}</p>}
 </>

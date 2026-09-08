@@ -21,6 +21,15 @@
     object-position: center;
     border-radius: inherit;
     pointer-events: none;
+
+    /* Transparent videos: don't paint placeholder behind alpha */
+    &[data-has-alpha='true'] {
+      background: transparent;
+    }
+  }
+
+  &:has(video[data-has-alpha='true']) {
+    background: transparent;
   }
 
   &-subtitle {
