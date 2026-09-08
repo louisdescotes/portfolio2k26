@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import '../styles/fonts.scss';
 import '../styles/global.scss';
@@ -42,6 +43,13 @@ const themeColor = '#fe5505';
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="preconnect" href="https://image.mux.com" />
 		<link rel="preconnect" href="https://stream.mux.com" />
+		<link
+			rel="preload"
+			href="/fonts/manrope/Manrope-VariableFont_wght.ttf"
+			as="font"
+			type="font/ttf"
+			crossorigin
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ClientRouter />
@@ -68,6 +76,7 @@ const themeColor = '#fe5505';
 		<script>
 			import '../scripts/page-init.ts';
 		</script>
+		<Analytics />
 		<SpeedInsights />
 	</body>
 </html>

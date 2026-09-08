@@ -172,15 +172,6 @@
             margin-inline: 0;
           }
         }
-
-        video {
-          width: 100%;
-          height: auto;
-          min-width: 0;
-          min-height: 0;
-          aspect-ratio: var(--media-ratio, auto);
-          object-fit: cover;
-        }
       }
     }
   }

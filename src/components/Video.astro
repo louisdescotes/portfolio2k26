@@ -6,6 +6,9 @@ interface Props {
 	poster?: string;
 	class?: string;
 	subtitleVideo?: string;
+	/** Intrinsic video size — reserves layout before metadata loads (CLS). */
+	width?: number;
+	height?: number;
 }
 
 const {
@@ -15,22 +18,34 @@ const {
 	poster,
 	class: className,
 	subtitleVideo,
+	width = 16,
+	height = 9,
 } = Astro.props;
+
+const mediaRatio = width / height;
+const orientation = mediaRatio < 1 ? 'portrait' : 'landscape';
 ---
 
 <>
-<div class:list={['project-video', className]} data-project-video>
-	<video
-	src={src}
-	poster={poster}
-	title={title}
-	muted
-	playsinline
-	preload="metadata"
-	loop={loop || undefined}
-	></video>
-</div>
-{subtitleVideo && <p class="project-video-subtitle">{subtitleVideo}</p>}
+	<div
+		class:list={['project-video', className]}
+		data-project-video
+		data-orientation={orientation}
+		style={`--media-ratio: ${mediaRatio}`}
+	>
+		<video
+			src={src}
+			poster={poster}
+			title={title}
+			muted
+			playsinline
+			preload="metadata"
+			loop={loop || undefined}
+			width={width}
+			height={height}
+		></video>
+	</div>
+	{subtitleVideo && <p class="project-video-subtitle">{subtitleVideo}</p>}
 </>
 
 <style is:global lang="scss">
