@@ -1,0 +1,54 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/fonts.scss';
+import '../styles/global.scss';
+import '../styles/view-transitions.scss';
+import '../styles/components/entrance.scss';
+import { pageDescription, pageTitle } from '../data/site';
+import { pageMainTransition, siteHeaderTransition } from '../data/transitions';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = pageTitle, description = pageDescription } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" transition:name="root" transition:animate="none">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://image.mux.com" />
+		<link rel="preconnect" href="https://stream.mux.com" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body>
+		<div class="app">
+			<header
+				class="header"
+				transition:name="site-header"
+				transition:animate={siteHeaderTransition}
+			>
+				<slot name="header" />
+			</header>
+
+			<main
+				id="page-main"
+				transition:name="page-main"
+				transition:animate={pageMainTransition}
+			>
+				<slot />
+			</main>
+		</div>
+
+		<script>
+			import '../scripts/page-init.ts';
+		</script>
+	</body>
+</html>

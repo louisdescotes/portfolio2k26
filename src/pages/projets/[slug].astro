@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectSheet from '../../components/ProjectSheet.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, type, description, muxPlaybackId } = project.data;
+---
+
+<BaseLayout title={`${title} — Louis Descotes`} description={`Étude de cas : ${title}`}>
+	<ProjectSheet
+		title={title}
+		type={type}
+		description={description}
+		muxPlaybackId={muxPlaybackId}
+	>
+		<Content />
+	</ProjectSheet>
+</BaseLayout>

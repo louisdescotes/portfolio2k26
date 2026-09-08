@@ -1,0 +1,38 @@
+---
+interface Props {
+	src: string;
+	title: string;
+	loop?: boolean;
+	poster?: string;
+	class?: string;
+	subtitleVideo?: string;
+}
+
+const {
+	src,
+	title,
+	loop = false,
+	poster,
+	class: className,
+	subtitleVideo,
+} = Astro.props;
+---
+
+<>
+<div class:list={['project-video', className]} data-project-video>
+	<video
+	src={src}
+	poster={poster}
+	title={title}
+	muted
+	playsinline
+	preload="metadata"
+	loop={loop || undefined}
+	></video>
+</div>
+{subtitleVideo && <p class="project-video-subtitle">{subtitleVideo}</p>}
+</>
+
+<style is:global lang="scss">
+	@use '../styles/components/project-video.scss';
+</style>

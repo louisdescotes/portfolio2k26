@@ -1,0 +1,19 @@
+---
+interface Props {
+	tag?: 'main' | 'div';
+}
+
+const { tag: Tag = 'main' } = Astro.props;
+---
+
+<Tag class="container">
+	<slot />
+</Tag>
+
+<style lang="scss">
+	@use '../styles/mixins.scss' as *;
+
+	.container {
+		@include container;
+	}
+</style>

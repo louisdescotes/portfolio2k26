@@ -1,0 +1,171 @@
+@use './variables.scss' as *;
+
+.app {
+	background-color: $black;
+	display: grid;
+	overflow: hidden;
+	grid-template-areas:
+		'header'
+		'main';
+	height: 100dvh;
+}
+
+header.header {
+	grid-area: header;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+	z-index: 100;
+	pointer-events: none;
+
+	> * {
+		pointer-events: auto;
+	}
+}
+
+#page-main {
+	grid-area: main;
+	position: relative;
+	overflow: hidden;
+	min-height: 0;
+	z-index: 2;
+	background-color: $white;
+	clip-path: inset(0% 0% 0% 0%);
+	isolation: isolate;
+}
+
+.home,
+.project-page {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.hide-scrollbar {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.home,
+.project-page {
+	@extend .hide-scrollbar;
+}
+
+@keyframes page-main-out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		transform: translateY(var(--vt-out-y, -160px)) scale(var(--vt-out-scale, 0.95));
+		opacity: 0.5;
+	}
+}
+
+@keyframes page-main-in {
+	from {
+		transform: translateY(var(--vt-in-y, 36dvh));
+		clip-path: inset(var(--vt-in-clip, 55%) 0% 0% 0%);
+		opacity: 1;
+	}
+
+	to {
+		transform: translateY(0);
+		clip-path: inset(0% 0% 0% 0%);
+		opacity: 1;
+	}
+}
+
+@keyframes site-header-out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes site-header-in {
+	0%,
+	48% {
+		opacity: 0;
+		transform: translateY(8dvh);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+::view-transition {
+	background-color: $black;
+}
+
+::view-transition-group(root) {
+	z-index: 0;
+	animation: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+	opacity: 1 !important;
+	animation: none !important;
+	mix-blend-mode: normal;
+}
+
+::view-transition-group(page-main) {
+	z-index: 2;
+	isolation: isolate;
+}
+
+::view-transition-image-pair(page-main) {
+	isolation: isolate;
+}
+
+::view-transition-old(page-main),
+::view-transition-new(page-main),
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+	animation-duration: var(--vt-duration, 0.7s) !important;
+	animation-timing-function: var(--vt-ease, cubic-bezier(0.4, 0.3, 0, 1)) !important;
+}
+
+::view-transition-old(page-main),
+::view-transition-new(page-main) {
+	mix-blend-mode: normal;
+	backface-visibility: hidden;
+}
+
+::view-transition-old(page-main) {
+	z-index: 1;
+}
+
+::view-transition-new(page-main) {
+	z-index: 2;
+}
+
+::view-transition-group(site-header) {
+	z-index: 100;
+	isolation: isolate;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+	mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}

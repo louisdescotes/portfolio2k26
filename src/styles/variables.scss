@@ -1,0 +1,31 @@
+$breakpoints: (
+  "sm": 600px,
+  "md": 900px,
+  "lg": 1200px
+);
+
+$black: #171717;
+$grey: #DFDFDF;
+$grey-text: #757575;
+$white: #FCFCFC;
+
+$Manrope: var(--Manrope-font), sans-serif;
+
+$container-max: 1160px;
+$prose-max: 35.9375rem;
+
+$design-width: 1440px;
+$fluid-min-vw: 375px;
+$fluid-max-vw: $design-width;
+
+$font-size-base: 18px;
+$section-gap: 100px;
+$block-gap: 42px;
+$intro-pt: 8rem;
+
+/* Shared surface / interaction tokens */
+$radius-media: 1.125em;
+$media-placeholder: rgba($grey-text, 0.08);
+$ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+$duration-press: 160ms;
+$press-scale: 0.97;

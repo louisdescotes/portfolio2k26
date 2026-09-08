@@ -1,0 +1,60 @@
+---
+import '@blossom-carousel/web/style.css';
+import MuxVideo from './MuxVideo.astro';
+import type { ProjectCarouselItem } from '../data/projects';
+
+interface Props {
+	projects: ProjectCarouselItem[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="projects-carousel" role="region" aria-label="Projets">
+	<blossom-carousel class="projects-carousel__track">
+		{
+			projects.map((project) => (
+				<div data-blossom-slide class="projects-carousel__slide">
+					<a href={project.href} class="projects-carousel__link">
+						<figure class="projects-carousel__media">
+							<MuxVideo
+								playbackId={project.muxPlaybackId}
+								src={project.coverVideo}
+								poster={project.coverPoster}
+								title={project.title}
+								loop
+								objectFit="contain"
+								class="projects-carousel__video"
+							/>
+							<figcaption class="projects-carousel__meta">
+								<span class="projects-carousel__title">{project.title}</span>
+								<span class="projects-carousel__type">{project.type}</span>
+							</figcaption>
+							<span class="projects-carousel__action" aria-hidden="true">
+								<svg
+									width="14"
+									height="14"
+									viewBox="0 0 18 18"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M3.75 9h10.5M9.75 4.5 14.25 9l-4.5 4.5"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</span>
+						</figure>
+					</a>
+				</div>
+			))
+		}
+	</blossom-carousel>
+</div>
+
+<style lang="scss">
+	@use '../styles/components/projects-carousel.scss';
+</style>

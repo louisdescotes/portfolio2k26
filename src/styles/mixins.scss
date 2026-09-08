@@ -1,0 +1,153 @@
+@use "./variables.scss" as *;
+@use "sass:map";
+@use "sass:math";
+
+@function fluid-size($min-px, $max-px) {
+  $min: math.div($min-px, 1px);
+  $max: math.div($max-px, 1px);
+  $min-vw: math.div($fluid-min-vw, 1px);
+  $max-vw: math.div($fluid-max-vw, 1px);
+
+  $slope: math.div($max - $min, $max-vw - $min-vw);
+  $intercept: $min - $slope * $min-vw;
+  $min-rem: math.div($min, 16);
+  $max-rem: math.div($max, 16);
+  $intercept-rem: math.div($intercept, 16);
+  $slope-vw: $slope * 100;
+
+  @return clamp(#{$min-rem}rem, #{$intercept-rem}rem + #{$slope-vw}vw, #{$max-rem}rem);
+}
+
+:root {
+  --container-padding: 1.75rem;
+  --font-size-base: 17px;
+  --line-height-base: 150%;
+  --section-gap: 3rem;
+  --block-gap: 1.5rem;
+  --intro-pt: 5em;
+
+  @media screen and (min-width: map.get($breakpoints, sm)) {
+    --container-padding: 2rem;
+    --font-size-base: #{$font-size-base};
+    --line-height-base: 125%;
+    --section-gap: 4rem;
+    --block-gap: 2rem;
+    --intro-pt: 8em;
+  }
+
+  @media screen and (min-width: map.get($breakpoints, md)) {
+    --container-padding: 4rem;
+    --section-gap: 5rem;
+    --block-gap: 2.25rem;
+    --intro-pt: 11em;
+  }
+
+  @media screen and (min-width: map.get($breakpoints, lg)) {
+    --container-padding: 11.5rem;
+    --section-gap: #{$section-gap};
+    --block-gap: #{$block-gap};
+    --intro-pt: #{$intro-pt};
+  }
+}
+
+@mixin media-min($_key) {
+  @media screen and (min-width: map.get($breakpoints, $_key)) {
+    & {
+      @content;
+    }
+  }
+}
+
+@mixin media-max($_key) {
+  @media screen and (max-width: (map.get($breakpoints, $_key) - 1)) {
+    & {
+      @content;
+    }
+  }
+}
+
+@mixin wrapper {
+  max-width: $container-max;
+  width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin container {
+  @include wrapper;
+
+  z-index: 1;
+  position: relative;
+
+  padding: 0 var(--container-padding);
+}
+
+@mixin container-project {
+  @include wrapper;
+
+  z-index: 1;
+  position: relative;
+
+  padding: 0 calc(var(--container-padding) / 1.32);
+}
+
+@mixin taille-base {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+@mixin section-gap {
+  margin-top: var(--section-gap);
+}
+
+@mixin block-gap {
+  margin-top: var(--block-gap);
+}
+
+@mixin resetUl {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin typo-bigtitle {
+  max-width: $prose-max;
+  color: $black;
+  font-family: $Manrope;
+  font-size: fluid-size(28px, 34px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@mixin typo-title {
+  max-width: $prose-max;
+  color: $black;
+  font-family: $Manrope;
+  font-size: fluid-size(18px, 20px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+@mixin typo-subtitle {
+  max-width: $prose-max;
+  color: $grey-text;
+  font-family: $Manrope;
+  font-size: fluid-size(14px, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+}
+
+@mixin typo-text {
+  max-width: $prose-max;
+  color: rgba($black, 0.8);
+  font-family: $Manrope;
+  font-size: fluid-size(16px, 18px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75;
+}

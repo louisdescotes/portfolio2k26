@@ -1,0 +1,58 @@
+/* Shared line-reveal + entrance hold states (home + project) */
+
+.line {
+	display: block;
+	overflow: hidden;
+	line-height: inherit;
+
+	&-cont {
+		position: relative;
+	}
+
+	&-wrapper {
+		display: block;
+		position: absolute;
+		visibility: hidden;
+		white-space: normal;
+		width: 100%;
+		pointer-events: none;
+	}
+
+	> * {
+		display: block;
+	}
+}
+
+[data-entrance='pending'] {
+	@media (prefers-reduced-motion: no-preference) {
+		[data-animate-text]:not(.line-cont) {
+			opacity: 0;
+		}
+
+		[data-animate-text] .line > * {
+			transform: translateY(110%);
+		}
+
+		[data-animate-back] {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+
+		/* Media: translateY + opacity */
+		[data-animate-media] {
+			opacity: 0;
+			transform: translateY(22px);
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-entrance] {
+		[data-animate-text] .line > *,
+		[data-animate-back],
+		[data-animate-media] {
+			opacity: 1 !important;
+			transform: none !important;
+		}
+	}
+}

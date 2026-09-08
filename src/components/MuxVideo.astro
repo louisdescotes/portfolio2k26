@@ -1,0 +1,66 @@
+---
+function getMuxPosterUrl(playbackId: string, time = 0): string {
+	return `https://image.mux.com/${playbackId}/thumbnail.webp?time=${time}`;
+}
+
+interface Props {
+	playbackId: string;
+	title: string;
+	loop?: boolean;
+	objectFit?: 'cover' | 'contain';
+	src?: string;
+	poster?: string;
+	class?: string;
+}
+
+const {
+	playbackId,
+	title,
+	loop = false,
+	objectFit = 'cover',
+	src,
+	poster,
+	class: className,
+} = Astro.props;
+
+const videoPoster = poster ?? getMuxPosterUrl(playbackId);
+const hasLocalSource = typeof src === 'string' && src !== '';
+const mediaStyle = `--media-object-fit: ${objectFit}; --media-object-position: center; object-fit: ${objectFit}; object-position: center;`;
+---
+
+<div
+	class:list={['mux-video', className]}
+	data-mux-video
+	data-mux-mode={hasLocalSource ? 'mp4' : 'hls'}
+>
+	{
+		hasLocalSource ? (
+			<video
+				src={src}
+				poster={videoPoster}
+				title={title}
+				muted
+				playsinline
+				preload="auto"
+				loop={loop || undefined}
+				style={mediaStyle}
+			/>
+		) : (
+			<mux-video
+				playback-id={playbackId}
+				poster={videoPoster}
+				stream-type="on-demand"
+				metadata-video-title={title}
+				muted
+				playsinline
+				preload="metadata"
+				loop={loop || undefined}
+				style={mediaStyle}
+			/>
+		)
+	}
+</div>
+
+<style is:global lang="scss">
+	@use '../styles/components/mux-video.scss';
+</style>

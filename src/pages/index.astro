@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Wrapper from '../components/Wrapper.astro';
+import Container from '../components/Container.astro';
+import ProjectsCarousel from '../components/ProjectsCarousel.astro';
+import MuxVideo from '../components/MuxVideo.astro';
+import CraftZoom from '../components/CraftZoom.astro';
+import { pageTitle, pageDescription } from '../data/site';
+import { getCollection } from 'astro:content';
+import type { ProjectCarouselItem } from '../data/projects';
+import { craftItems } from '../data/craft';
+
+const projectEntries = (await getCollection('projects')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+
+const projects: ProjectCarouselItem[] = projectEntries.map((entry) => ({
+	title: entry.data.title,
+	type: entry.data.type,
+	href: `/projets/${entry.id}`,
+	muxPlaybackId: entry.data.muxPlaybackId,
+	coverVideo: entry.data.coverVideo,
+	coverPoster: entry.data.coverPoster,
+}));
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+	<div class="home" data-entrance="pending">
+		<Wrapper>
+			<Container>
+				<header class="home-intro">
+					<h1 data-animate-text="title">Louis Descotes</h1>
+					<p data-animate-text="type">Développeur web - UI/UX Designer - Intégration CMS headless</p>
+				</header>
+
+				<p class="home-intro__desc" data-animate-text="description">{pageDescription}</p>
+			</Container>
+		</Wrapper>
+
+		<section class="home-projects" aria-labelledby="projects-title" data-animate-media="projects">
+			<Wrapper>
+				<Container tag="div">
+					<div class="home-section home-section--heading-only">
+						<h2 id="projects-title">Projets</h2>
+					</div>
+				</Container>
+			</Wrapper>
+			<ProjectsCarousel projects={projects} />
+		</section>
+
+		<Wrapper>
+			<Container tag="div">
+				<section class="home-section" aria-labelledby="services-title">
+					<h2 id="services-title">Services</h2>
+					<ul>
+						<li>front-end et back-end</li>
+						<li>intégration CMS Headless</li>
+						<li>payloadcms</li>
+						<li>design UI/UX</li>
+					</ul>
+				</section>
+
+				<section class="home-section" aria-labelledby="contact-title">
+					<h2 id="contact-title">Contact</h2>
+					<address class="home-contact">
+						<ul>
+							<li>
+								<a href="mailto:ldescotes1@gmail.com">Email</a>
+							</li>
+							<li>
+								<a
+									href="https://www.linkedin.com/in/louis-descotes/"
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									LinkedIn
+								</a>
+							</li>
+							<li>
+								<a
+									href="https://github.com/louis-descotes"
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									GitHub
+								</a>
+							</li>
+							<li>
+								<a
+									href="https://www.malt.fr/profile/louisdescotes"
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									Malt
+								</a>
+							</li>
+						</ul>
+					</address>
+				</section>
+			</Container>
+		</Wrapper>
+
+		<section class="home-section home-craft" aria-labelledby="craft-title">
+			<Container tag="div">
+				<h2 id="craft-title">Craft</h2>
+			</Container>
+			<div class="craft-grid">
+				{
+					craftItems.map((item) => (
+						<button
+							type="button"
+							class="craft-card"
+							data-craft-zoom-trigger
+							data-craft-title={item.title}
+							aria-label={`Agrandir ${item.title}`}
+						>
+							<div class="craft-card__media">
+								<MuxVideo
+									playbackId={item.muxPlaybackId}
+									title={item.title}
+									loop
+								/>
+							</div>
+						</button>
+					))
+				}
+			</div>
+		</section>
+		<CraftZoom />
+	</div>
+</BaseLayout>
+
+<style is:global lang="scss">
+	@use '../styles/pages/home.scss';
+</style>

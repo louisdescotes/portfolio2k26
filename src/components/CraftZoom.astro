@@ -1,0 +1,39 @@
+<div
+	class="craft-zoom"
+	data-craft-zoom
+	hidden
+	role="dialog"
+	aria-modal="true"
+	aria-labelledby="craft-zoom-title"
+	aria-hidden="true"
+>
+	<div class="craft-zoom__backdrop" data-craft-zoom-backdrop></div>
+	<p id="craft-zoom-title" class="craft-zoom__title">Vidéo craft</p>
+	<button
+		type="button"
+		class="craft-zoom__close"
+		data-craft-zoom-close
+		aria-label="Fermer"
+	>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="18"
+			height="18"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M18 6 6 18"></path>
+			<path d="m6 6 12 12"></path>
+		</svg>
+	</button>
+	<div class="craft-zoom__stage" data-craft-zoom-stage></div>
+</div>
+
+<style is:global lang="scss">
+	@use '../styles/components/craft-zoom.scss';
+</style>

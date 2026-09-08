@@ -1,0 +1,187 @@
+@use '../variables.scss' as *;
+@use '../mixins.scss' as *;
+
+.project-page {
+  width: 100%;
+  min-height: 100%;
+
+  @include container-project;
+
+  &-header {
+    padding-top: 1.5rem;
+
+    @include media-min(sm) {
+      padding-top: 2rem;
+    }
+
+    &-hero {
+      margin-top: calc(var(--intro-pt) - 2.5rem);
+
+      h1 {
+        @include typo-bigtitle;
+      }
+
+      p {
+        @include typo-subtitle;
+      }
+    }
+
+    &-description {
+      @include typo-text;
+      margin-top: 1rem;
+    }
+  }
+
+  &-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    height: 2.125rem;
+    padding: 0 0.625rem;
+    margin-left: -0.625rem;
+    border-radius: 9999px;
+    color: $grey-text;
+    font-family: $Manrope;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    transition:
+      background-color $duration-press $ease-out-strong,
+      color $duration-press $ease-out-strong;
+
+    svg {
+      flex-shrink: 0;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &:hover {
+      background: rgba($grey-text, 0.12);
+      color: $black;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+    }
+  }
+
+  &-hero-media {
+    .mux-video {
+      aspect-ratio: 16 / 9;
+      height: auto;
+      margin-bottom: 8px;
+    }
+  }
+
+  &-body {
+    @include block-gap;
+    padding-bottom: var(--container-padding);
+
+    .text-subtitle {
+      @include typo-subtitle;
+    }
+
+    .text-subtitle + h2 {
+      margin-top: 0.35rem;
+    }
+
+    h2 {
+      margin: 0.25rem 0 1rem 0;
+      @include typo-title;
+    }
+
+    p,
+    ul,
+    ol {
+      @include typo-text;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: $radius-media;
+      background: $media-placeholder;
+      margin-bottom: 8px;
+    }
+
+    .image-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+
+      @include media-min(sm) {
+        flex-direction: row;
+      }
+
+      img {
+        flex: 1;
+        min-width: 0;
+        margin-bottom: 0;
+        aspect-ratio: 5 / 4;
+        object-fit: cover;
+
+        &.is-portrait {
+          aspect-ratio: 3 / 4;
+        }
+      }
+    }
+
+    .image-row-tier {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+
+      @include media-min(sm) {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .character-background {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background: #3c3c3c;
+        border-radius: $radius-media;
+        overflow: hidden;
+
+        @include media-min(sm) {
+          display: contents;
+        }
+      }
+
+      .project-video {
+        margin-bottom: 0;
+
+        &[data-orientation='portrait'] {
+          width: 46%;
+          margin-inline: auto;
+        }
+
+        @include media-min(sm) {
+          flex: var(--media-ratio, 1) 1 0;
+          min-width: 0;
+
+          &[data-orientation='portrait'] {
+            width: auto;
+            margin-inline: 0;
+          }
+        }
+
+        video {
+          width: 100%;
+          height: auto;
+          min-width: 0;
+          min-height: 0;
+          aspect-ratio: var(--media-ratio, auto);
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

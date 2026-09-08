@@ -1,0 +1,148 @@
+@use '../variables.scss' as *;
+@use '../mixins.scss' as *;
+
+.home {
+  min-height: 100%;
+}
+
+.home-intro {
+  h1 {
+    padding-top: var(--intro-pt);
+    @include typo-bigtitle;
+  }
+
+  p {
+    @include typo-subtitle;
+  }
+}
+
+.home-intro + .home-intro__desc,
+.home-intro__desc {
+  @include block-gap;
+  @include typo-text;
+}
+
+.home-section {
+  @include section-gap;
+
+  h2 {
+    @include typo-subtitle;
+  }
+
+  h2 + ul,
+  h2 + .home-contact {
+    margin-top: 16px;
+  }
+
+  ul,
+  .home-contact {
+    @include typo-text;
+  }
+
+  &--heading-only {
+    margin-top: 0;
+  }
+}
+
+.home-projects {
+  @include section-gap;
+  overflow: visible;
+}
+
+.home-contact {
+  font-style: normal;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.home-craft {
+  h2 {
+    @include typo-subtitle;
+  }
+
+  h2 + .craft-grid {
+    margin-top: 24px;
+  }
+}
+
+.craft-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+
+  @include block-gap;
+  padding-inline: var(--container-padding);
+  padding-bottom: var(--container-padding);
+
+  @include media-max(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.craft-card {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  appearance: none;
+  font: inherit;
+  color: inherit;
+
+  &__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid $grey;
+    border-radius: $radius-media;
+    background: $media-placeholder;
+    transition: transform $duration-press $ease-out-strong;
+    transform-origin: center;
+  }
+
+  &:active &__media {
+    transform: scale($press-scale);
+  }
+
+  &:has([data-craft-zoomed='true']) &__media,
+  &[data-craft-press-lock] &__media {
+    transform: none;
+    transition: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $black;
+    outline-offset: 4px;
+    border-radius: $radius-media;
+  }
+
+  .mux-video {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .craft-card {
+    cursor: zoom-in;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .craft-card {
+    &__media {
+      transition: none;
+    }
+
+    &:active &__media {
+      transform: none;
+    }
+  }
+}
