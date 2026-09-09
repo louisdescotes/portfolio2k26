@@ -32,6 +32,14 @@
     background: transparent;
   }
 
+  &.video-bg-grey {
+    background: $media-bg-grey;
+
+    &:has(video[data-has-alpha='true']) {
+      background: $media-bg-grey;
+    }
+  }
+
   &-subtitle {
     width: 100%;
     text-align: center;
