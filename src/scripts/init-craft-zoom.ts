@@ -204,7 +204,9 @@ const openZoom = async (trigger: HTMLElement) => {
 
 	const home = getHome();
 	const media = trigger.querySelector<HTMLElement>('.craft-card__media');
-	const video = trigger.querySelector<HTMLElement>('[data-mux-video]');
+	const video =
+		trigger.querySelector<HTMLElement>('[data-craft-zoom-media]') ??
+		trigger.querySelector<HTMLElement>('[data-mux-video]');
 	const backdrop = overlay.querySelector<HTMLElement>('[data-craft-zoom-backdrop]');
 	const closeButton = overlay.querySelector<HTMLButtonElement>('[data-craft-zoom-close]');
 
@@ -226,7 +228,7 @@ const openZoom = async (trigger: HTMLElement) => {
 	phase = 'opening';
 	const generation = closeGeneration;
 	const player = getPlayer(video);
-	const title = trigger.dataset.craftTitle ?? 'Vidéo craft';
+	const title = trigger.dataset.craftTitle ?? 'Craft';
 	const titleEl = overlay.querySelector('.craft-zoom__title');
 	if (titleEl) titleEl.textContent = title;
 

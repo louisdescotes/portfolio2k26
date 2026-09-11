@@ -7,9 +7,11 @@ interface Props {
 	type: string;
 	description: string;
 	muxPlaybackId: string;
+	coverVideo: string;
+	coverPoster: string;
 }
 
-const { title, type, description, muxPlaybackId } = Astro.props;
+const { title, type, description, muxPlaybackId, coverVideo, coverPoster } = Astro.props;
 ---
 
 <article class="project-page" data-entrance="pending">
@@ -33,7 +35,14 @@ const { title, type, description, muxPlaybackId } = Astro.props;
 
 		<div class="project-page-body">
 			<div class="project-page-hero-media" data-animate-media>
-				<MuxVideo playbackId={muxPlaybackId} title={title} loop />
+				<MuxVideo
+					playbackId={muxPlaybackId}
+					src={coverVideo}
+					poster={coverPoster}
+					title={title}
+					loop
+					objectFit="cover"
+				/>
 			</div>
 			<div data-animate-rest>
 				<slot />

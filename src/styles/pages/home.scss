@@ -100,11 +100,13 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border: 1px solid $grey;
+    overflow: hidden;
+    border: 0;
     border-radius: $radius-media;
     background: $media-placeholder;
     transition: transform $duration-press $ease-out-strong;
     transform-origin: center;
+    box-shadow: 0 0 0 1px $grey;
   }
 
   &:active &__media {
@@ -112,6 +114,7 @@
   }
 
   &:has([data-craft-zoomed='true']) &__media,
+  &__media[data-craft-zoomed='true'],
   &[data-craft-press-lock] &__media {
     transform: none;
     transition: none;
@@ -126,6 +129,8 @@
   .mux-video {
     position: absolute;
     inset: 0;
+    border-radius: 0;
+    background: transparent;
   }
 }
 

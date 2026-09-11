@@ -69,7 +69,8 @@
   display: none;
 }
 
-.mux-video[data-craft-zoomed='true'] {
+.mux-video[data-craft-zoomed='true'],
+[data-craft-zoom-media][data-craft-zoomed='true'] {
   z-index: 201;
   cursor: zoom-out;
 }

@@ -114,9 +114,11 @@ const projects: ProjectCarouselItem[] = projectEntries.map((entry) => ({
 							data-craft-title={item.title}
 							aria-label={`Agrandir ${item.title}`}
 						>
-							<div class="craft-card__media">
+							<div class="craft-card__media" data-craft-zoom-media>
 								<MuxVideo
 									playbackId={item.muxPlaybackId}
+									src={item.src}
+									poster={item.poster}
 									title={item.title}
 									loop
 								/>

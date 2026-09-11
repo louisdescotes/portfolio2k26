@@ -40,7 +40,10 @@ export function initMuxVideos(scope: ParentNode = document) {
 					void loadMuxVideo().then(() => {
 						player.play?.().catch(() => {});
 					});
-				} else if (wrapper.dataset.craftZoomed !== 'true') {
+				} else if (
+					wrapper.dataset.craftZoomed !== 'true' &&
+					wrapper.closest('[data-craft-zoom-media]')?.dataset.craftZoomed !== 'true'
+				) {
 					player.pause?.();
 				}
 			},

@@ -1,9 +1,17 @@
-export interface CraftItem {
+export type CraftItem = {
 	title: string;
 	muxPlaybackId: string;
-}
+	src?: string;
+	poster?: string;
+};
 
 export const craftItems: CraftItem[] = [
+	{
+		title: 'X Like',
+		muxPlaybackId: 'local-xp4',
+		src: '/craft/xp4.mp4',
+		poster: '/craft/xp4-poster.jpg',
+	},
 	{
 		title: 'Craft 1',
 		muxPlaybackId: '2hIk7XjBp00buJ202IuLTwQn8x7H9bzFcLvUyrW7diO8E',

@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, type, description, muxPlaybackId } = project.data;
+const { title, type, description, muxPlaybackId, coverVideo, coverPoster } = project.data;
 ---
 
 <BaseLayout title={`${title} | Louis Descotes`} description={description}>
@@ -23,6 +23,8 @@ const { title, type, description, muxPlaybackId } = project.data;
 		type={type}
 		description={description}
 		muxPlaybackId={muxPlaybackId}
+		coverVideo={coverVideo}
+		coverPoster={coverPoster}
 	>
 		<Content />
 	</ProjectSheet>
