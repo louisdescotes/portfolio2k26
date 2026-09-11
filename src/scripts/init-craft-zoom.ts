@@ -11,6 +11,7 @@ interface CraftZoomSession {
 	media: HTMLElement;
 	video: HTMLElement;
 	player: HTMLMediaElement | null;
+	hasAudio: boolean;
 }
 
 interface ZoomRect {
@@ -150,6 +151,11 @@ const setOverlayOpen = (isOpen: boolean) => {
 const restoreVideo = () => {
 	if (!session) return;
 
+	if (session.hasAudio && session.player) {
+		session.player.muted = true;
+		session.player.setAttribute('muted', '');
+	}
+
 	clearFixedRect(session.video);
 	delete session.video.dataset.craftZoomed;
 };
@@ -180,8 +186,15 @@ const finishIdle = (shouldRestoreFocus = true) => {
 
 const isPointerCloseLocked = () => performance.now() - openedAt < CLOSE_GUARD_MS;
 
-const keepPlaying = (player: HTMLMediaElement | null) => {
-	player?.play?.().catch(() => {});
+const keepPlaying = (player: HTMLMediaElement | null, withSound = false) => {
+	if (!player) return;
+
+	if (withSound) {
+		player.muted = false;
+		player.removeAttribute('muted');
+	}
+
+	player.play?.().catch(() => {});
 };
 
 const lockPressScale = (trigger: HTMLElement) => {
@@ -228,12 +241,13 @@ const openZoom = async (trigger: HTMLElement) => {
 	phase = 'opening';
 	const generation = closeGeneration;
 	const player = getPlayer(video);
+	const hasAudio = trigger.dataset.craftAudio === 'true';
 	const title = trigger.dataset.craftTitle ?? 'Craft';
 	const titleEl = overlay.querySelector('.craft-zoom__title');
 	if (titleEl) titleEl.textContent = title;
 
-	session = { trigger, media, video, player };
-	keepPlaying(player);
+	session = { trigger, media, video, player, hasAudio };
+	keepPlaying(player, hasAudio);
 	openedAt = performance.now();
 
 	setScrollLock(true);
@@ -310,6 +324,10 @@ const closeZoom = async (immediate = false) => {
 	}
 
 	phase = 'closing';
+	if (session.hasAudio && session.player) {
+		session.player.muted = true;
+		session.player.setAttribute('muted', '');
+	}
 	keepPlaying(session.player);
 	lockPressScale(session.trigger);
 

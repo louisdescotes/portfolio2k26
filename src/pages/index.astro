@@ -112,6 +112,7 @@ const projects: ProjectCarouselItem[] = projectEntries.map((entry) => ({
 							class="craft-card"
 							data-craft-zoom-trigger
 							data-craft-title={item.title}
+							data-craft-audio={item.hasAudio ? 'true' : undefined}
 							aria-label={`Agrandir ${item.title}`}
 						>
 							<div class="craft-card__media" data-craft-zoom-media>

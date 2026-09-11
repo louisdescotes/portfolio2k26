@@ -3,6 +3,8 @@ export type CraftItem = {
 	muxPlaybackId: string;
 	src?: string;
 	poster?: string;
+	/** Unmute when zoomed (stays muted in the grid for autoplay). */
+	hasAudio?: boolean;
 };
 
 export const craftItems: CraftItem[] = [
@@ -11,6 +13,7 @@ export const craftItems: CraftItem[] = [
 		muxPlaybackId: 'local-xp4',
 		src: '/craft/xp4.mp4',
 		poster: '/craft/xp4-poster.jpg',
+		hasAudio: true,
 	},
 	{
 		title: 'Craft 1',
